@@ -121,36 +121,39 @@ const Home = () => {
 
           {/* Cards Area */}
           <div className="w-full min-h-[200px]">
-            <motion.div 
-              variants={staggerContainer} 
-              initial="hidden" 
-              animate="visible" 
-              className="grid grid-rows-2 grid-flow-col auto-cols-[150px] lg:flex lg:flex-row overflow-x-auto gap-4 md:gap-5 pb-8 hide-scrollbar snap-x snap-mandatory px-4 lg:px-0 w-full"
-            >
-              {categories.slice(0, 8).map((cat, i) => (
-                <motion.div 
-                  variants={fadeInUp}
-                  key={cat.id || i} 
-                  onClick={() => navigate('/shop', { state: { category: cat.name } })}
-                  className="group flex flex-col bg-white p-3 rounded-[20px] shadow-[0_10px_30px_rgba(233,30,99,0.05)] hover:shadow-[0_20px_40px_rgba(233,30,99,0.15)] active:scale-[0.98] transition-all duration-300 cursor-pointer w-full lg:w-[180px] lg:min-w-[180px] snap-start hover:-translate-y-1 shrink-0"
-                >
-                  <div className="relative aspect-square rounded-[14px] overflow-hidden mb-3 bg-gradient-to-br from-[#FFF5F8] to-[#FFEDF3]">
-                    <img 
-                      src={cat.image || '/cat_gifts.png'} 
-                      alt={cat.name} 
-                      loading="lazy"
-                      className="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-transform duration-700 ease-in-out" 
-                      onError={(e) => { e.target.src = '/cat_jewellery.png'; }}
-                    />
-                  </div>
-                  
-                  <div className="flex items-center justify-between px-2 pb-1">
-                    <h3 className="font-bold text-gray-900 text-[10px] lg:text-[11px] tracking-wider uppercase">{cat.name}</h3>
-                    <ArrowRight size={12} className="text-primary group-hover:translate-x-1 transition-all" />
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+            {categories.length > 0 && (
+              <motion.div 
+                variants={staggerContainer} 
+                initial="hidden" 
+                whileInView="visible" 
+                viewport={{ once: true, amount: 0.1 }}
+                className="grid grid-rows-2 grid-flow-col auto-cols-[150px] lg:flex lg:flex-row overflow-x-auto gap-4 md:gap-5 pb-8 hide-scrollbar snap-x snap-mandatory px-4 lg:px-0 w-full"
+              >
+                {categories.slice(0, 8).map((cat, i) => (
+                  <motion.div 
+                    variants={fadeInUp}
+                    key={cat.id || i} 
+                    onClick={() => navigate('/shop', { state: { category: cat.name } })}
+                    className="group flex flex-col bg-white p-3 rounded-[20px] shadow-[0_10px_30px_rgba(233,30,99,0.05)] hover:shadow-[0_20px_40px_rgba(233,30,99,0.15)] active:scale-[0.98] transition-all duration-300 cursor-pointer w-full lg:w-[180px] lg:min-w-[180px] snap-start hover:-translate-y-1 shrink-0"
+                  >
+                    <div className="relative aspect-square rounded-[14px] overflow-hidden mb-3 bg-gradient-to-br from-[#FFF5F8] to-[#FFEDF3]">
+                      <img 
+                        src={cat.image || '/cat_gifts.png'} 
+                        alt={cat.name} 
+                        loading="lazy"
+                        className="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-transform duration-700 ease-in-out" 
+                        onError={(e) => { e.target.src = '/cat_jewellery.png'; }}
+                      />
+                    </div>
+                    
+                    <div className="flex items-center justify-between px-2 pb-1">
+                      <h3 className="font-bold text-gray-900 text-[10px] lg:text-[11px] tracking-wider uppercase">{cat.name}</h3>
+                      <ArrowRight size={12} className="text-primary group-hover:translate-x-1 transition-all" />
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
           </div>
 
         </div>

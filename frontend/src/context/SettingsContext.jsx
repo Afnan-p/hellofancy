@@ -7,13 +7,17 @@ const SettingsContext = createContext();
 export const useSettings = () => useContext(SettingsContext);
 
 export const SettingsProvider = ({ children }) => {
-  const [settings, setSettings] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [settings, setSettings] = useState(() => {
+    const saved = localStorage.getItem('hellofancy_settings');
+    return saved ? JSON.parse(saved) : null;
+  });
+  const [loading, setLoading] = useState(!settings);
 
   const fetchSettings = async () => {
     try {
       const { data } = await api.get('/settings');
       setSettings(data);
+      localStorage.setItem('hellofancy_settings', JSON.stringify(data));
     } catch (error) {
       console.error('Failed to fetch settings:', error);
     } finally {
