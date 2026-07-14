@@ -138,6 +138,7 @@ const Home = () => {
                     <img 
                       src={cat.image || '/cat_gifts.png'} 
                       alt={cat.name} 
+                      loading="lazy"
                       className="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-transform duration-700 ease-in-out" 
                       onError={(e) => { e.target.src = '/cat_jewellery.png'; }}
                     />
@@ -242,6 +243,7 @@ const Home = () => {
                     <img 
                       src={product.image} 
                       alt={product.name} 
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out cursor-pointer"
                     />
                   </Link>
@@ -358,7 +360,7 @@ const Home = () => {
             <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="relative h-[420px] rounded-[3rem] overflow-hidden group shadow-[0_15px_40px_rgba(233,30,99,0.06)] hover:shadow-[0_25px_50px_rgba(233,30,99,0.12)] transition-all duration-500 bg-[#FAEDEB]">
               {/* Image Side */}
               <div className="absolute inset-0 sm:left-[35%] sm:w-[65%] h-full overflow-hidden">
-                <img src="/women_footwear.png" alt="Women's Footwear" className="w-full h-full object-cover object-center sm:object-right group-hover:scale-105 transition-transform duration-1000 ease-out" />
+                <img src="/women_footwear.png" alt="Women's Footwear" loading="lazy" className="w-full h-full object-cover object-center sm:object-right group-hover:scale-105 transition-transform duration-1000 ease-out" />
               </div>
               
               {/* Gradient Fade to blend image with text block */}
@@ -391,7 +393,7 @@ const Home = () => {
             <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={{ once: true }} className="relative h-[420px] rounded-[3rem] overflow-hidden group shadow-[0_15px_40px_rgba(0,0,0,0.15)] hover:shadow-[0_25px_50px_rgba(0,0,0,0.25)] transition-all duration-500 bg-[#352A26]">
               {/* Image Side */}
               <div className="absolute inset-0 sm:left-[35%] sm:w-[65%] h-full overflow-hidden">
-                <img src="/men_footwear.png" alt="Men's Footwear" className="w-full h-full object-cover object-center sm:object-right group-hover:scale-105 transition-transform duration-1000 ease-out opacity-90 group-hover:opacity-100" />
+                <img src="/men_footwear.png" alt="Men's Footwear" loading="lazy" className="w-full h-full object-cover object-center sm:object-right group-hover:scale-105 transition-transform duration-1000 ease-out opacity-90 group-hover:opacity-100" />
               </div>
               
               {/* Gradient Fade */}
@@ -462,7 +464,7 @@ const Home = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-[#FAEDEB] to-transparent z-10 hidden md:block w-32"></div>
               {/* Fade for mobile connecting image to text block */}
               <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#FAEDEB] to-transparent z-10 md:hidden"></div>
-              <img src="/perfect_gift_cta.png" alt="Perfect Gift" className="w-full h-full object-cover object-center md:object-left" />
+              <img src="/perfect_gift_cta.png" alt="Perfect Gift" loading="lazy" className="w-full h-full object-cover object-center md:object-left" />
             </div>
             
           </motion.div>
