@@ -120,12 +120,11 @@ const Home = () => {
           </div>
 
           {/* Cards Area */}
-          <div className="w-full">
+          <div className="w-full min-h-[200px]">
             <motion.div 
               variants={staggerContainer} 
               initial="hidden" 
-              whileInView="visible" 
-              viewport={{ once: true, margin: "-50px" }}
+              animate="visible" 
               className="grid grid-rows-2 grid-flow-col auto-cols-[150px] lg:flex lg:flex-row overflow-x-auto gap-4 md:gap-5 pb-8 hide-scrollbar snap-x snap-mandatory px-4 lg:px-0 w-full"
             >
               {categories.slice(0, 8).map((cat, i) => (
