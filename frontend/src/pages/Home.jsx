@@ -121,9 +121,16 @@ const Home = () => {
 
           {/* Cards Area */}
           <div className="w-full">
-            <div className="grid grid-rows-2 grid-flow-col auto-cols-[150px] lg:flex lg:flex-row overflow-x-auto gap-4 md:gap-5 pb-8 hide-scrollbar snap-x snap-mandatory px-4 lg:px-0 w-full">
+            <motion.div 
+              variants={staggerContainer} 
+              initial="hidden" 
+              whileInView="visible" 
+              viewport={{ once: true, margin: "-50px" }}
+              className="grid grid-rows-2 grid-flow-col auto-cols-[150px] lg:flex lg:flex-row overflow-x-auto gap-4 md:gap-5 pb-8 hide-scrollbar snap-x snap-mandatory px-4 lg:px-0 w-full"
+            >
               {categories.slice(0, 8).map((cat, i) => (
-                <div 
+                <motion.div 
+                  variants={fadeInUp}
                   key={cat.id || i} 
                   onClick={() => navigate('/shop', { state: { category: cat.name } })}
                   className="group flex flex-col bg-white p-3 rounded-[20px] shadow-[0_10px_30px_rgba(233,30,99,0.05)] hover:shadow-[0_20px_40px_rgba(233,30,99,0.15)] active:scale-[0.98] transition-all duration-300 cursor-pointer w-full lg:w-[180px] lg:min-w-[180px] snap-start hover:-translate-y-1 shrink-0"
@@ -141,9 +148,9 @@ const Home = () => {
                     <h3 className="font-bold text-gray-900 text-[10px] lg:text-[11px] tracking-wider uppercase">{cat.name}</h3>
                     <ArrowRight size={12} className="text-primary group-hover:translate-x-1 transition-all" />
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
         </div>
