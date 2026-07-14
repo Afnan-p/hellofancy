@@ -13,6 +13,9 @@ connectDB();
 
 const app = express();
 
+// Trust proxy for rate limiter (required for Render/Heroku)
+app.set('trust proxy', 1);
+
 // Rate limiting configuration
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
